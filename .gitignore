@@ -9,3 +9,5 @@ lib/
 *.so
 *.dylib
 package.xml
+cmake-build-*
+.idea/*

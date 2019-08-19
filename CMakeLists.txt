@@ -13,6 +13,8 @@ if (NOT CMAKE_BUILD_TYPE)
     endif()
 endif()
 
+set(CMAKE_CXX_STANDARD 17)
+
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 set(CMAKE_MODULE_PATH
