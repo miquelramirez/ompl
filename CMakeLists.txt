@@ -49,7 +49,7 @@ add_definitions(-DBOOST_MATH_NO_LONG_DOUBLE_MATH_FUNCTIONS)
 set_package_properties(Boost PROPERTIES
     URL "https://www.boost.org"
     PURPOSE "Used throughout OMPL for data serialization, graphs, etc.")
-find_package(Boost 1.58 QUIET REQUIRED COMPONENTS serialization filesystem system program_options)
+find_package(Boost 1.68 REQUIRED COMPONENTS serialization filesystem system program_options)
 include_directories(SYSTEM ${Boost_INCLUDE_DIR})
 
 # Add support in Boost::Python for std::shared_ptr

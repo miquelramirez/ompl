@@ -38,6 +38,9 @@
 #include "ompl/base/goals/GoalSampleableRegion.h"
 #include "ompl/base/ProblemDefinition.h"
 #include "ompl/util/DisableCompilerWarning.h"
+#include "ompl/base/spaces/SE2StateSpace.h"
+#include "ompl/base/spaces/RealVectorStateSpace.h"
+#include "ompl/base/spaces/SO2StateSpace.h"
 #include <limits>
 #include <stack>
 #include <algorithm>
