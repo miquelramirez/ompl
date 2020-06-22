@@ -40,7 +40,6 @@
 #include "ompl/config.h"
 #include "ompl/util/String.h"
 #include <boost/scoped_ptr.hpp>
-#include <boost/progress.hpp>
 #include <thread>
 #include <mutex>
 #include <condition_variable>
@@ -435,13 +434,13 @@ void ompl::tools::Benchmark::benchmark(const Request &req)
         msg::noOutputHandler();
     OMPL_INFORM("Beginning benchmark");
 
-    boost::scoped_ptr<boost::progress_display> progress;
+    boost::scoped_ptr<ompl::time::ProgressDisplay> progress;
     if (req.displayProgress)
     {
         std::cout << "Running experiment " << exp_.name << "." << std::endl;
         std::cout << "Each planner will be executed " << req.runCount << " times for at most " << req.maxTime
                   << " seconds. Memory is limited at " << req.maxMem << "MB." << std::endl;
-        progress.reset(new boost::progress_display(100, std::cout));
+        progress.reset(new ompl::time::ProgressDisplay);
     }
 
     machine::MemUsage_t memStart = machine::getProcessMemoryUsage();
@@ -478,11 +477,9 @@ void ompl::tools::Benchmark::benchmark(const Request &req)
 
         // Add planner progress property names to struct
         exp_.planners[i].progressPropertyNames.emplace_back("time REAL");
-        base::Planner::PlannerProgressProperties::const_iterator iter;
-        for (iter = planners_[i]->getPlannerProgressProperties().begin();
-             iter != planners_[i]->getPlannerProgressProperties().end(); ++iter)
+        for (const auto &property : planners_[i]->getPlannerProgressProperties())
         {
-            exp_.planners[i].progressPropertyNames.push_back(iter->first);
+            exp_.planners[i].progressPropertyNames.push_back(property.first);
         }
         std::sort(exp_.planners[i].progressPropertyNames.begin(), exp_.planners[i].progressPropertyNames.end());
 

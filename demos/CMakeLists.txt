@@ -46,6 +46,12 @@ if (OMPL_BUILD_DEMOS)
     add_ompl_demo(demo_ConstrainedPlanningImplicitParallel constraint/ConstrainedPlanningImplicitParallel.cpp)
     add_ompl_demo(demo_ConstrainedPlanningKinematicChain constraint/ConstrainedPlanningKinematicChain.cpp)
 
+    add_ompl_demo(demo_QuotientSpacePlanningRigidBody2D quotientspace/QuotientSpacePlanningRigidBody2D.cpp)
+    add_ompl_demo(demo_QuotientSpacePlanningRigidBody3D quotientspace/QuotientSpacePlanningRigidBody3D.cpp)
+    add_ompl_demo(demo_QuotientSpacePlanningKinematicChain quotientspace/QuotientSpacePlanningKinematicChain.cpp)
+    add_ompl_demo(demo_QuotientSpacePlanningHyperCube quotientspace/QuotientSpacePlanningHyperCube.cpp)
+    add_ompl_demo(demo_QuotientSpacePlanningHyperCubeBenchmark quotientspace/QuotientSpacePlanningHyperCubeBenchmark.cpp)
+
     if (OMPL_EXTENSION_ODE)
         add_ompl_demo(demo_OpenDERigidBodyPlanning OpenDERigidBodyPlanning.cpp)
     endif()
